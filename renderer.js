@@ -14,6 +14,17 @@ window.addEventListener('draw-result', (event) => {
   historyDiv.innerHTML = results.map(result => `<p>${result}</p>`).join('');
 });
 
+document.getElementById('apply-settings').addEventListener('click', () => {
+  const maxNum = parseInt(document.getElementById('max-number').value);
+  const drawCnt = parseInt(document.getElementById('draw-count').value);
+  window.electron.updateSettings(maxNum, drawCnt);
+});
+
+window.addEventListener('settings-updated', (event) => {
+  const { maxNumber, drawCount } = event.detail;
+  document.getElementById('current-settings').textContent = `選號區間: 0-${maxNumber}，開獎碼數: ${drawCount}`;
+});
+
 document.querySelectorAll('.tab').forEach(tab => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
