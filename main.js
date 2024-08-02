@@ -2,8 +2,9 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 
 let win;
+let round = 1;
 
-function createWindow() {
+function createWindow () {
   win = new BrowserWindow({
     width: 800,
     height: 600,
@@ -42,5 +43,6 @@ ipcMain.handle('generate-numbers', () => {
     }
   }
   numbers.sort((a, b) => a - b);
-  win.webContents.send('draw-result', numbers);
+  win.webContents.send('draw-result', { numbers, round });
+  round++;
 });

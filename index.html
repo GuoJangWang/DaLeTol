@@ -9,6 +9,7 @@
   <div class="header">
     <h1>大樂透程式</h1>
     <p>選號區間: 0 - 1000 (取 6 碼)</p>
+    <p id="round">第 1 期</p> <!-- 新增顯示期數的元素 -->
   </div>
   <div class="tabs">
     <div class="tab active" data-tab="main">主頁</div>
@@ -23,16 +24,5 @@
     <!-- 您可以在這裡顯示往期的開獎資訊 -->
   </div>
   <script src="renderer.js"></script>
-  <script>
-    document.querySelectorAll('.tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
-        
-        tab.classList.add('active');
-        document.querySelector(`.content.${tab.dataset.tab}`).classList.add('active');
-      });
-    });
-  </script>
 </body>
 </html>
