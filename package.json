@@ -1,50 +1,44 @@
 {
-  "name": "illfated-sun-match-rvbap",
-  "productName": "illfated-sun-match-rvbap",
-  "description": "My Electron application description",
-  "keywords": [],
-  "main": "./main.js",
+  "name": "tom-bear-lottery",
+  "productName": "湯姆熊大樂透",
   "version": "1.0.0",
-  "author": "john.wang",
+  "description": "大樂透程式",
+  "main": "main.js",
   "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "start": "electron .",
+    "dist": "electron-builder"
   },
-  "dependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "electron": "31.2.1",
-    "@electron-forge/cli": "7.3.1",
-    "@electron-forge/maker-deb": "7.3.1",
-    "@electron-forge/maker-rpm": "7.3.1",
-    "@electron-forge/maker-squirrel": "7.3.1",
-    "@electron-forge/maker-zip": "7.3.1"
+    "electron": "^25.0.0",
+    "electron-builder": "^22.14.13"
   },
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
+  "build": {
+    "appId": "com.tom.bear.lottery",
+    "productName": "湯姆熊大樂透",
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer.js",
+      "index.html",
+      "styles.css",
+      "package.json"
+    ],
+    "extraFiles": [],
+    "win": {
+      "target": [
         {
-          "name": "@electron-forge/maker-squirrel"
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
+          "target": "portable",
+          "arch": [
+            "x64"
           ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
         }
       ]
+    },
+    "directories": {
+      "buildResources": "assets"
     }
-  },
-  "license": "MIT"
+  }
 }
