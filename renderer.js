@@ -1,3 +1,5 @@
+const correctPassword = "0625";
+
 document.getElementById('generate').addEventListener('click', () => {
   window.electron.generateNumbers();
 });
@@ -26,11 +28,35 @@ window.addEventListener('settings-updated', (event) => {
 });
 
 document.querySelectorAll('.tab').forEach(tab => {
-  tab.addEventListener('click', () => {
+  tab.addEventListener('click', (event) => {
+    if (tab.dataset.tab === "settings") {
+      event.preventDefault();
+      document.getElementById('password-modal').style.display = "block";
+    } else {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+
+      tab.classList.add('active');
+      document.querySelector(`.content.${tab.dataset.tab}`).classList.add('active');
+    }
+  });
+});
+
+document.getElementById('submit-password').addEventListener('click', () => {
+  const passwordInput = document.getElementById('password-input').value;
+  if (passwordInput === correctPassword) {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
-    
-    tab.classList.add('active');
-    document.querySelector(`.content.${tab.dataset.tab}`).classList.add('active');
-  });
+
+    document.querySelector('.tab[data-tab="settings"]').classList.add('active');
+    document.querySelector('.content.settings').classList.add('active');
+
+    document.getElementById('password-modal').style.display = "none";
+  } else {
+    alert("密碼錯誤");
+  }
+});
+
+document.querySelector('.close').addEventListener('click', () => {
+  document.getElementById('password-modal').style.display = "none";
 });
