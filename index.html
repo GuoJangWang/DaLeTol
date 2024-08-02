@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>大樂透程式</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div class="header">
+    <h1>大樂透程式</h1>
+    <p>選號區間: 0 - 1000 (取 6 碼)</p>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="main">主頁</div>
+    <div class="tab" data-tab="history">往期開獎資訊</div>
+  </div>
+  <div class="content main active">
+    <button id="generate">選號並開獎</button>
+    <div id="result" class="main"></div>
+  </div>
+  <div class="content history">
+    <h2>往期開獎資訊</h2>
+    <!-- 您可以在這裡顯示往期的開獎資訊 -->
+  </div>
+  <script src="renderer.js"></script>
+  <script>
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+        
+        tab.classList.add('active');
+        document.querySelector(`.content.${tab.dataset.tab}`).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
