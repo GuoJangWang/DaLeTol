@@ -3,6 +3,7 @@ const path = require('path');
 
 let win;
 let round = 1;
+let results = [];
 
 function createWindow () {
   win = new BrowserWindow({
@@ -43,6 +44,8 @@ ipcMain.handle('generate-numbers', () => {
     }
   }
   numbers.sort((a, b) => a - b);
-  win.webContents.send('draw-result', { numbers, round });
+  const result = `第${round}期 選號區間: 0-1000 開獎號碼: ${numbers.join(', ')}`;
+  results.push(result);
+  win.webContents.send('draw-result', { numbers, round, results });
   round++;
 });
