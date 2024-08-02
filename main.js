@@ -2,8 +2,12 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 
 let win;
+let round = 1;
+let results = [];
+let maxNumber = 1000;
+let drawCount = 6;
 
-function createWindow() {
+function createWindow () {
   win = new BrowserWindow({
     width: 800,
     height: 600,
@@ -35,12 +39,21 @@ app.on('window-all-closed', () => {
 
 ipcMain.handle('generate-numbers', () => {
   const numbers = [];
-  while (numbers.length < 6) {
-    const num = Math.floor(Math.random() * 1000) + 1;
+  while (numbers.length < drawCount) {
+    const num = Math.floor(Math.random() * maxNumber) + 1;
     if (!numbers.includes(num)) {
       numbers.push(num);
     }
   }
   numbers.sort((a, b) => a - b);
-  win.webContents.send('draw-result', numbers);
+  const result = `第${round}期 選號區間: 0-${maxNumber} 開獎號碼: ${numbers.join(', ')}`;
+  results.push(result);
+  win.webContents.send('draw-result', { numbers, round, results });
+  round++;
+});
+
+ipcMain.handle('update-settings', (event, { maxNum, drawCnt }) => {
+  maxNumber = maxNum;
+  drawCount = drawCnt;
+  win.webContents.send('settings-updated', { maxNumber, drawCount });
 });
