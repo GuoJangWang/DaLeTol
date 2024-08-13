@@ -1,45 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>大樂透</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-<body>
-  <div class="header">
-    <h1>湯姆熊大樂透</h1>
-    <p id="current-settings">選號區間: 0 - 1000，開獎碼數: 6</p>
-    <p id="round">第 1 期</p>
-  </div>
-  <div class="tabs">
-    <div class="tab active" data-tab="main">主頁</div>
-    <div class="tab" data-tab="history">往期開獎資訊</div>
-    <div class="tab" data-tab="settings">設置參數</div>
-  </div>
-  <div class="content main active">
-    <button id="generate">選號並開獎</button>
-    <div id="result" class="main"></div>
-  </div>
-  <div class="content history">
-    <h2>往期開獎資訊</h2>
-    <div id="history"></div>
-  </div>
-  <div class="content settings">
-    <h2>設置參數</h2>
-    <label for="max-number">選號區間最大值:</label>
-    <input type="number" id="max-number" value="1000"><br>
-    <label for="draw-count">開獎碼數:</label>
-    <input type="number" id="draw-count" value="6"><br>
-    <button id="apply-settings">應用</button>
-  </div>
-  <div id="password-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <p>請輸入密碼</p>
-      <input type="password" id="password-input">
-      <button id="submit-password">提交</button>
+  <head>
+    <meta charset="UTF-8" />
+    <title>大樂透</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1>湯姆熊大樂透</h1>
+      <p id="current-settings">選號區間: 1 - 1000，開獎碼數: 6</p>
+      <p id="round">第 1 期</p>
     </div>
-  </div>
-  <script src="renderer.js"></script>
-</body>
+    <div class="tabs">
+      <div class="tab active" data-tab="main">主頁</div>
+      <div class="tab" data-tab="history">往期開獎資訊</div>
+      <div class="tab" data-tab="settings">設置參數</div>
+    </div>
+    <div class="content main active">
+      <div id="result" class="result-box">
+        本期開獎號碼:
+      </div>
+      
+        <button style="color: red" id="generate">選號並開獎</button>
+        <button style="color: gray" id="clear">清空</button>
+      
+    </div>
+    <div class="content history">
+      <h2>往期開獎資訊</h2>
+      <div id="history"></div>
+    </div>
+    <div class="content settings">
+      <h2>設置參數</h2>
+      <label for="max-number">選號區間最大值:</label>
+      <input type="number" id="max-number" value="1000" /><br />
+      <label for="draw-count">開獎碼數:</label>
+      <input type="number" id="draw-count" value="6" /><br />
+      <button id="apply-settings">應用</button>
+    </div>
+    <div id="password-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>請輸入密碼</p>
+        <input type="password" id="password-input" />
+        <button id="submit-password">提交</button>
+      </div>
+    </div>
+    <script src="renderer.js"></script>
+  </body>
 </html>

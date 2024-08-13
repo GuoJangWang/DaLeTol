@@ -68,3 +68,23 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+.result-box {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #333;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+/*
+.button-container {
+  position: fixed;
+  top: 500px; 
+  left: 50px; 
+  width: 200px;
+  padding: 10px 20px;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+}*/
