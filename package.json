@@ -1,7 +1,7 @@
 {
   "name": "tom-bear-lottery",
   "productName": "湯姆熊大樂透",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "大樂透程式",
   "main": "main.js",
   "scripts": {
