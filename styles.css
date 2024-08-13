@@ -68,3 +68,16 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
+.result-box {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #333;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}

@@ -52,6 +52,10 @@ ipcMain.handle('generate-numbers', () => {
   round++;
 });
 
+ipcMain.handle('clear-now', () => {
+  win.webContents.send('clear-result');  // 通知渲染進程清空結果
+});
+
 ipcMain.handle('update-settings', (event, { maxNum, drawCnt }) => {
   maxNumber = maxNum;
   drawCount = drawCnt;

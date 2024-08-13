@@ -4,6 +4,10 @@ document.getElementById('generate').addEventListener('click', () => {
   window.electron.generateNumbers();
 });
 
+document.getElementById('clear').addEventListener('click', () => {
+  window.electron.clearNow();
+});
+
 window.addEventListener('draw-result', (event) => {
   const { numbers, round, results } = event.detail;
   const resultDiv = document.getElementById('result');
@@ -16,6 +20,11 @@ window.addEventListener('draw-result', (event) => {
   historyDiv.innerHTML = results.map(result => `<p>${result}</p>`).join('');
 });
 
+window.addEventListener('clear-result', (event) => {
+  const resultDiv = document.getElementById('result');
+  resultDiv.textContent = '本期開獎號碼: ';  // 清空顯示內容
+});
+
 document.getElementById('apply-settings').addEventListener('click', () => {
   const maxNum = parseInt(document.getElementById('max-number').value);
   const drawCnt = parseInt(document.getElementById('draw-count').value);
@@ -24,7 +33,7 @@ document.getElementById('apply-settings').addEventListener('click', () => {
 
 window.addEventListener('settings-updated', (event) => {
   const { maxNumber, drawCount } = event.detail;
-  document.getElementById('current-settings').textContent = `選號區間: 0-${maxNumber}，開獎碼數: ${drawCount}`;
+  document.getElementById('current-settings').textContent = `選號區間: 1-${maxNumber}，開獎碼數: ${drawCount}`;
 });
 
 document.querySelectorAll('.tab').forEach(tab => {
